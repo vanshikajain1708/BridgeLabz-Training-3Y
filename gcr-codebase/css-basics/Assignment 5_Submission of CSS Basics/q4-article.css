@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background-color: #fdfdfd;
+    color: #333;
+    padding: 2em 10%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5em;
+}
+
+.subheading {
+    font-size: 1rem;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+main p {
+    margin-bottom: 1.5em;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Style the first letter of each paragraph */
+main p::first-letter {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+/* Make the first line of each paragraph bold */
+main p::first-line {
+    font-weight: bold;
+}
+
+/* Highlight keywords */
+mark {
+    background-color: #ffe082;
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
+
+/* Blockquote styling */
+blockquote {
+    border-left: 5px solid #e67e22;
+    background-color: #fdf3e7;
+    padding: 1em 1.5em;
+    margin: 2em 0;
+    font-style: italic;
+    color: #555;
+}
