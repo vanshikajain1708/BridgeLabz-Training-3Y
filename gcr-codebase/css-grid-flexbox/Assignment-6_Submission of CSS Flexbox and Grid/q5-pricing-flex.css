@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 2em;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5em;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 2em;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h2 {
+    color: #2c3e50;
+    margin-bottom: 0.5em;
+}
+
+.price {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 0.8em;
+}
+
+/* Featured/highlighted middle card */
+.card.featured {
+    background-color: #fff8e1;
+    transform: scale(1.1);
+    border: 2px solid #f39c12;
+}
+
+.card.featured:hover {
+    transform: scale(1.1) translateY(-10px);
+}
+
+/* Fade-in animation on page load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stack vertically below 750px */
+@media (max-width: 750px) {
+    .pricing-container {
+        flex-direction: column;
+    }
+
+    .card.featured {
+        transform: scale(1);
+    }
+
+    .card.featured:hover {
+        transform: translateY(-10px);
+    }
+}
