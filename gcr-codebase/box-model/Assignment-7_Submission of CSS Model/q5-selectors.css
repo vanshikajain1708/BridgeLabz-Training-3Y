@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 2em;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5em;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 0.8em;
+}
+
+.form-demo, .list-demo, .combinator-demo {
+    background-color: white;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Attribute selector: targets input with type="text" */
+[type="text"] {
+    padding: 0.5em;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    margin-right: 1em;
+}
+
+/* Attribute selector: targets links starting with https (secure links) */
+[href^="https"] {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Attribute selector: targets links starting with http but not https handled above; this targets all http links generally */
+a {
+    display: inline-block;
+    margin-right: 1.5em;
+    text-decoration: none;
+}
+
+/* Pseudo-class: hover changes color */
+a:hover {
+    text-decoration: underline;
+}
+
+/* Pseudo-class: focus changes border color */
+input:focus {
+    outline: none;
+    border-color: #e67e22;
+}
+
+/* Pseudo-class: nth-child targets every 2nd list item */
+li:nth-child(2n) {
+    background-color: #ecf0f1;
+    padding: 0.3em;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 1em;
+}
+
+li {
+    padding: 0.4em;
+}
+
+/* Pseudo-element: ::before adds content before heading */
+.combinator-demo h2::before {
+    content: "★ ";
+    color: #e67e22;
+}
+
+/* Pseudo-element: ::after adds content after heading */
+.combinator-demo h2::after {
+    content: " ★";
+    color: #e67e22;
+}
+
+/* Combinator: > selects direct child paragraph only */
+.parent > p {
+    color: #2980b9;
+    font-weight: bold;
+}
+
+/* Combinator: + selects the span immediately after the paragraph (adjacent sibling) */
+.parent p + span {
+    color: #27ae60;
+}
+
+/* Combinator: ~ selects all sibling spans after the paragraph (general sibling) */
+.parent p ~ span {
+    font-style: italic;
+}
+
+/* Combinator: descendant selector (space) selects paragraph nested anywhere inside .parent */
+.parent .nested p {
+    color: #c0392b;
+}

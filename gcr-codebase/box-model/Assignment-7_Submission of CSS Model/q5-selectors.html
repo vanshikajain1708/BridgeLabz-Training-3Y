@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS Selectors</title>
+    <link rel="stylesheet" href="q5-selectors.css">
+</head>
+<body>
+    <h1>Advanced CSS Selectors Demo</h1>
+
+    <div class="form-demo">
+        <h2>Attribute Selectors</h2>
+        <input type="text" placeholder="Text input" name="username">
+        <a href="https://example.com">Secure Link (https)</a>
+        <a href="http://example.com">Insecure Link (http)</a>
+    </div>
+
+    <div class="list-demo">
+        <h2>Pseudo-classes and nth-child</h2>
+        <ul>
+            <li>Item One</li>
+            <li>Item Two</li>
+            <li>Item Three</li>
+            <li>Item Four</li>
+            <li>Item Five</li>
+        </ul>
+        <input type="text" placeholder="Focus me">
+    </div>
+
+    <div class="combinator-demo">
+        <h2>Combinators</h2>
+        <div class="parent">
+            <p>Direct child paragraph (using &gt;)</p>
+            <span>Adjacent sibling span (using +)</span>
+            <span>General sibling span (using ~)</span>
+            <div class="nested">
+                <p>Descendant paragraph (using space)</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
