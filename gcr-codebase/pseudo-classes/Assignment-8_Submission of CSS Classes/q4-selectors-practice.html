@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors Practice</title>
+    <link rel="stylesheet" href="q4-selectors-practice.css">
+</head>
+<body>
+    <header>
+        <h1>CSS Selectors Practice Page</h1>
+    </header>
+
+    <main>
+        <p>This is a plain paragraph styled using an element selector.</p>
+        <p class="highlight">This paragraph is styled using a class selector.</p>
+        <p id="special">This paragraph is styled using an ID selector.</p>
+
+        <a href="https://example.com">Secure Link</a>
+
+        <div class="parent">
+            <p>Direct child paragraph (combinator: &gt;)</p>
+            <span>Adjacent sibling span (combinator: +)</span>
+            <span>General sibling span (combinator: ~)</span>
+            <div class="nested">
+                <p>Descendant paragraph (combinator: space)</p>
+            </div>
+        </div>
+
+        <ul>
+            <li>List Item One</li>
+            <li>List Item Two</li>
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CSS Selectors Practice</p>
+    </footer>
+</body>
+</html>
