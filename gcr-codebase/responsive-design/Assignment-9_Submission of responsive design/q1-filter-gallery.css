@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 2em;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5em;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5em;
+}
+
+.gallery-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.4s ease;
+}
+
+.gallery-item figcaption {
+    padding: 0.8em;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* Different filters applied */
+.filter-blur {
+    filter: blur(3px);
+}
+
+.filter-grayscale {
+    filter: grayscale(100%);
+}
+
+.filter-sepia {
+    filter: sepia(100%);
+}
+
+.filter-brightness {
+    filter: brightness(1.6);
+}
+
+.filter-contrast {
+    filter: contrast(2);
+}
+
+.filter-hue {
+    filter: hue-rotate(180deg);
+}
+
+/* Remove filter on hover with smooth transition */
+.gallery-item img:hover {
+    filter: none;
+}
+
+/* Stack single column below 600px */
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
