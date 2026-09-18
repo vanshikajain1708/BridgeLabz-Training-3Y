@@ -1,0 +1,33 @@
+/* Override Bootstrap theme variables for custom branding */
+:root {
+    --bs-primary: #d35400;
+    --bs-font-sans-serif: 'Poppins', sans-serif;
+}
+
+/* Apply Google Font globally */
+body {
+    font-family: var(--bs-font-sans-serif);
+}
+
+/* Custom themed header/footer using the overridden primary color */
+.themed-header {
+    background-color: var(--bs-primary);
+}
+
+/* Custom themed button matching brand color */
+.themed-btn {
+    background-color: var(--bs-primary);
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.themed-btn:hover {
+    background-color: #a84300;
+    color: white;
+}
+
+.card-title {
+    font-weight: 600;
+    color: #2c3e50;
+}

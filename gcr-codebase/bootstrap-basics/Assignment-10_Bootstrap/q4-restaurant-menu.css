@@ -1,0 +1,19 @@
+/* Custom styles supplementing Bootstrap utilities */
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Add hover highlight to list group items */
+.list-group-item {
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #fdf3e7;
+}
+
+/* Style table headings */
+table thead {
+    font-weight: 600;
+}

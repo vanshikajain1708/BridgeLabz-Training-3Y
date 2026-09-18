@@ -1,0 +1,19 @@
+/* Custom styles supplementing Bootstrap utilities */
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Add subtle shadow and rounded corners to alerts */
+.alert {
+    border-radius: 8px;
+}
+
+/* Slight hover effect on the dashboard card */
+.card {
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12) !important;
+}
