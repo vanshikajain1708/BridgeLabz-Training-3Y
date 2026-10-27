@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Ticket Booking</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 420px; margin: 40px auto; padding: 0 16px; }
+    label { display: block; margin-top: 14px; font-weight: bold; }
+    input { width: 100%; padding: 8px; margin-top: 4px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    input.valid { border-color: green; }
+    input.invalid { border-color: red; }
+    .error { color: red; font-size: 13px; min-height: 16px; margin-top: 2px; }
+    button { margin-top: 18px; padding: 10px 18px; cursor: pointer; }
+    #ticket { margin-top: 20px; padding: 14px; border: 2px dashed green; border-radius: 6px; display: none; }
+  </style>
+</head>
+<body>
+  <h2>Movie Ticket Booking</h2>
+
+  <form id="bookingForm" novalidate>
+    <label for="name">Name</label>
+    <input type="text" id="name" placeholder="Only alphabets" />
+    <div class="error" id="nameError"></div>
+
+    <label for="email">Email</label>
+    <input type="text" id="email" placeholder="example@domain.com" />
+    <div class="error" id="emailError"></div>
+
+    <label for="seats">Seats (1 to 10)</label>
+    <input type="text" id="seats" placeholder="Number of seats" />
+    <div class="error" id="seatsError"></div>
+
+    <button type="submit">Book Ticket</button>
+  </form>
+
+  <div id="ticket"></div>
+
+  <script>
+    const rules = {
+      name: { regex: /^[A-Za-z]+(?: [A-Za-z]+)*$/, message: "Name can contain only alphabets." },
+      email: { regex: /^[\w.+-]+@[\w-]+(\.[\w-]+)+$/, message: "Enter a valid email like example@domain.com." },
+      seats: { regex: /^([1-9]|10)$/, message: "Seats must be a number from 1 to 10." }, // 1-9 or 10
+    };
+
+    function validateField(id) {
+      const input = document.getElementById(id);
+      const error = document.getElementById(id + "Error");
+      const isValid = rules[id].regex.test(input.value.trim());
+
+      input.classList.toggle("valid", isValid);
+      input.classList.toggle("invalid", !isValid);
+      error.textContent = isValid ? "" : rules[id].message;
+      return isValid;
+    }
+
+    Object.keys(rules).forEach((id) => {
+      document.getElementById(id).addEventListener("input", () => validateField(id));
+    });
+
+    document.getElementById("bookingForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const allValid = Object.keys(rules).map(validateField).every((r) => r === true);
+      const ticket = document.getElementById("ticket");
+
+      if (!allValid) {
+        ticket.style.display = "none";
+        return;
+      }
+
+      // Store booking info in an object and display the ticket
+      const booking = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        seats: Number(document.getElementById("seats").value.trim()),
+      };
+
+      ticket.innerHTML = `
+        <h3>Booking Confirmed!</h3>
+        <p><b>Name:</b> ${booking.name}</p>
+        <p><b>Email:</b> ${booking.email}</p>
+        <p><b>Seats:</b> ${booking.seats}</p>`;
+      ticket.style.display = "block";
+      console.log(booking);
+    });
+  </script>
+</body>
+</html>

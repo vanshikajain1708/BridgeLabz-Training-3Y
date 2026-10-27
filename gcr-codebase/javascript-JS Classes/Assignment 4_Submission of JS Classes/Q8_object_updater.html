@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Object Updater</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 420px; margin: 40px auto; padding: 0 16px; }
+    label { display: block; margin-top: 14px; font-weight: bold; }
+    input { width: 100%; padding: 8px; margin-top: 4px; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    button { margin-top: 18px; padding: 10px 18px; cursor: pointer; }
+    #details { margin-top: 20px; padding: 14px; background: #f4f4f4; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h2>Edit User</h2>
+
+  <form id="userForm">
+    <label for="name">Name</label>
+    <input type="text" id="name" />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" />
+
+    <label for="age">Age</label>
+    <input type="number" id="age" />
+
+    <button type="submit">Update</button>
+  </form>
+
+  <div id="details"></div>
+
+  <script>
+    const user = { name: "John", email: "john@mail.com", age: 21 };
+
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const ageInput = document.getElementById("age");
+
+    // Fill the form with the current object values
+    function fillForm() {
+      nameInput.value = user.name;
+      emailInput.value = user.email;
+      ageInput.value = user.age;
+    }
+
+    // Update the object from the form fields
+    function updateUser() {
+      user.name = nameInput.value;
+      user.email = emailInput.value;
+      user.age = Number(ageInput.value);
+    }
+
+    // Show the updated object below the form using the DOM
+    function showDetails() {
+      document.getElementById("details").innerHTML = `
+        <h3>Current User Object</h3>
+        <p><b>Name:</b> ${user.name}</p>
+        <p><b>Email:</b> ${user.email}</p>
+        <p><b>Age:</b> ${user.age}</p>
+        <pre>${JSON.stringify(user, null, 2)}</pre>`;
+    }
+
+    // Real-time update while typing
+    [nameInput, emailInput, ageInput].forEach((input) => {
+      input.addEventListener("input", () => {
+        updateUser();
+        showDetails();
+      });
+    });
+
+    // Update on submit as well
+    document.getElementById("userForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      updateUser();
+      showDetails();
+      console.log(user);
+    });
+
+    fillForm();
+    showDetails();
+  </script>
+</body>
+</html>
