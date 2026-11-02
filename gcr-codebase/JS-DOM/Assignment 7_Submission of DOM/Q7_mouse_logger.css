@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 30px 16px;
+}
+
+#box {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 20px auto;
+  border: 2px solid #333;
+  background: #fafafa;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#coords {
+  font-size: 18px;
+  font-weight: bold;
+}

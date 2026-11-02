@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 8px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+#counter {
+  margin: 8px 0 12px;
+  font-weight: bold;
+  color: green;
+}
+
+#counter.warning {
+  color: #d4a000;
+}
+
+#counter.danger {
+  color: red;
+}
+
+button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
