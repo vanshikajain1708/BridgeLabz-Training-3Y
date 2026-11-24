@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Courses</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 0 16px; }
+    header { text-align: center; padding: 24px 0 8px; }
+    .search-row { display: flex; gap: 8px; }
+    #searchInput { flex: 1; padding: 10px; font-size: 15px; }
+    button { padding: 10px 14px; cursor: pointer; }
+    #courseCount { margin: 12px 0; font-weight: bold; color: #1565c0; }
+    #courseList { list-style: none; padding: 0; }
+    #courseList li { padding: 12px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 6px; }
+    #noResults { display: none; color: #b71c1c; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Online Courses</h1>
+  </header>
+
+  <main>
+    <section aria-label="Search">
+      <div class="search-row">
+        <input type="search" id="searchInput" placeholder="Search courses..." />
+        <button id="clearBtn">Clear</button>
+      </div>
+      <p id="courseCount"></p>
+    </section>
+
+    <section aria-label="Course list">
+      <ul id="courseList">
+        <li><span class="course-title">HTML and CSS Fundamentals</span></li>
+        <li><span class="course-title">JavaScript Basics</span></li>
+        <li><span class="course-title">Advanced JavaScript</span></li>
+        <li><span class="course-title">jQuery for Beginners</span></li>
+        <li><span class="course-title">React JS Complete Guide</span></li>
+        <li><span class="course-title">Node.js and Express</span></li>
+        <li><span class="course-title">Python for Data Science</span></li>
+        <li><span class="course-title">Machine Learning Basics</span></li>
+      </ul>
+      <p id="noResults">No courses found.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Course search demo built with jQuery</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Q7_search_courses.js"></script>
+</body>
+</html>

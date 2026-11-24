@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Subscription Panel</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 0 16px; }
+    header { text-align: center; padding: 24px 0 8px; }
+    #topicList { list-style: none; padding: 0; }
+    .topic { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; padding: 12px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 8px; }
+    .topic-name { font-weight: bold; min-width: 140px; }
+    .status { font-size: 14px; }
+    .status.on { color: #2e7d32; }
+    .status.off { color: #999; }
+    .actions button { padding: 6px 10px; margin-left: 4px; cursor: pointer; }
+    .actions button:disabled { opacity: 0.4; cursor: not-allowed; }
+    #addTopicForm { display: flex; gap: 8px; margin: 18px 0; }
+    #newTopic { flex: 1; padding: 8px; }
+    .sr-only { position: absolute; left: -9999px; }
+    .message { padding: 10px; border-radius: 6px; margin-top: 8px; }
+    .message.success { background: #c8e6c9; color: #1b5e20; }
+    .message.error { background: #ffcdd2; color: #b71c1c; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Subscription Panel</h1>
+  </header>
+
+  <main>
+    <section aria-labelledby="topicHeading">
+      <h2 id="topicHeading">Your Topics</h2>
+      <ul id="topicList"></ul>
+    </section>
+
+    <section aria-labelledby="addHeading">
+      <h2 id="addHeading">Add a Topic</h2>
+      <form id="addTopicForm">
+        <label for="newTopic" class="sr-only">New topic</label>
+        <input type="text" id="newTopic" placeholder="Enter a new topic name" />
+        <button type="submit">Add Topic</button>
+      </form>
+    </section>
+
+    <div id="messages" aria-live="polite"></div>
+  </main>
+
+  <footer>
+    <p>Subscription demo built with jQuery</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Q6_subscription_panel.js"></script>
+</body>
+</html>

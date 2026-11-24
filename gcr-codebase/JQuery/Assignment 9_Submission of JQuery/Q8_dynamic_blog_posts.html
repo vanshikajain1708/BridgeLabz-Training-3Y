@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Blog Posts</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 0 auto; padding: 0 16px; }
+    header { text-align: center; padding: 24px 0 8px; }
+    .panel { border: 1px solid #ccc; border-radius: 8px; padding: 12px; margin-bottom: 14px; }
+    .panel button { padding: 8px 12px; margin: 4px 4px 4px 0; cursor: pointer; }
+    .panel input { padding: 8px; margin-right: 4px; }
+    .post { border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin-bottom: 10px; cursor: pointer; background: #fff; }
+    .post.selected { outline: 2px solid #1e88e5; }
+    .post.featured { border-color: #f9a825; background: #fffde7; }
+    .post.highlight { background: #fff59d; }
+    .post-title { display: inline-block; margin: 0 6px 6px 0; }
+    .tag { display: inline-block; background: #1e88e5; color: #fff; font-size: 12px; padding: 2px 8px; border-radius: 10px; margin-right: 4px; }
+    #postCount { font-weight: bold; color: #1565c0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blog Admin Panel</h1>
+    <p id="postCount"></p>
+  </header>
+
+  <main>
+    <section class="panel" aria-label="Post actions">
+      <button id="addPost">Add New Post</button>
+      <button id="prependFeatured">Prepend Featured Post</button>
+      <button id="removeLast">Remove Last Post</button>
+    </section>
+
+    <section class="panel" aria-label="Tag actions">
+      <p>Click a post to select it (or leave none selected to tag all posts).</p>
+      <input type="text" id="tagInput" placeholder="Tag name, e.g. news" />
+      <button id="tagBefore">Add Tag Before Title</button>
+      <button id="tagAfter">Add Tag After Title</button>
+    </section>
+
+    <section class="panel" aria-label="Keyword highlight">
+      <input type="text" id="keywordInput" placeholder="Keyword, e.g. jQuery" />
+      <button id="highlightBtn">Highlight Posts</button>
+      <button id="clearHighlight">Clear Highlight</button>
+    </section>
+
+    <section id="posts" aria-label="Posts">
+      <article class="post">
+        <h3 class="post-title">Getting Started with jQuery</h3>
+        <p class="post-body">Learn how to select elements and handle events with jQuery.</p>
+      </article>
+      <article class="post">
+        <h3 class="post-title">CSS Grid Made Simple</h3>
+        <p class="post-body">A quick guide to building responsive layouts using CSS Grid.</p>
+      </article>
+      <article class="post">
+        <h3 class="post-title">Understanding JavaScript Closures</h3>
+        <p class="post-body">Closures let functions remember the variables around them.</p>
+      </article>
+      <article class="post">
+        <h3 class="post-title">Tips for Writing Clean Code</h3>
+        <p class="post-body">Use clear names, small functions and helpful comments.</p>
+      </article>
+      <article class="post">
+        <h3 class="post-title">Debugging in the Browser</h3>
+        <p class="post-body">Use the console and breakpoints to find bugs faster, even in jQuery code.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Blog manager demo built with jQuery</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Q8_dynamic_blog_posts.js"></script>
+</body>
+</html>

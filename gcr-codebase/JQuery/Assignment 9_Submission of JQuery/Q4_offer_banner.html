@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Special Offer Banner</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 0 auto; padding: 0 16px; }
+    header { text-align: center; padding: 24px 0 8px; }
+    .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+    .controls button { padding: 8px 14px; cursor: pointer; }
+    .banner { padding: 18px; margin-bottom: 10px; border-radius: 8px; color: #fff; font-weight: bold; }
+    .banner:nth-child(1) { background: #e53935; }
+    .banner:nth-child(2) { background: #1e88e5; }
+    .banner:nth-child(3) { background: #43a047; }
+    .banner:nth-child(4) { background: #fb8c00; }
+    .banner:nth-child(5) { background: #8e24aa; }
+    #rotator { position: relative; min-height: 70px; }
+    .slide { padding: 24px; border-radius: 8px; background: #263238; color: #fff; text-align: center; font-size: 20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Special Offers</h1>
+  </header>
+
+  <main>
+    <section aria-labelledby="controlHeading">
+      <h2 id="controlHeading">Banner Controls</h2>
+      <div class="controls">
+        <label for="bannerTarget">Apply to:</label>
+        <select id="bannerTarget">
+          <option value="all">All banners</option>
+          <option value="0">Banner 1</option>
+          <option value="1">Banner 2</option>
+          <option value="2">Banner 3</option>
+          <option value="3">Banner 4</option>
+          <option value="4">Banner 5</option>
+        </select>
+        <button id="hideBtn">Hide</button>
+        <button id="showBtn">Show</button>
+        <button id="slideUpBtn">Slide Up</button>
+        <button id="slideDownBtn">Slide Down</button>
+        <button id="fadeOutBtn">Fade Out</button>
+        <button id="fadeInBtn">Fade In</button>
+      </div>
+
+      <div id="banners">
+        <div class="banner">Banner 1: Flat 50% off on electronics</div>
+        <div class="banner">Banner 2: Free delivery on orders above Rs. 499</div>
+        <div class="banner">Banner 3: Buy 1 Get 1 on fashion</div>
+        <div class="banner">Banner 4: Extra 10% off with UPI payments</div>
+        <div class="banner">Banner 5: Weekend mega sale starts now</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="rotateHeading">
+      <h2 id="rotateHeading">Rotating Offers (changes every 5 seconds)</h2>
+      <div id="rotator">
+        <div class="slide">Offer 1: New user? Get Rs. 200 off</div>
+        <div class="slide">Offer 2: Free gift on orders above Rs. 1999</div>
+        <div class="slide">Offer 3: 20% cashback on first order</div>
+        <div class="slide">Offer 4: Festival special deals live</div>
+        <div class="slide">Offer 5: Clearance sale: up to 70% off</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Banner demo built with jQuery</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Q4_offer_banner.js"></script>
+</body>
+</html>

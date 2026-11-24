@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Page Greeting</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 0 16px; text-align: center; }
+    header { padding: 40px 0 10px; }
+    #greeting { cursor: pointer; color: #1565c0; }
+    #welcomeMessage { background: #e3f2fd; padding: 16px; border-radius: 8px; }
+    button { padding: 10px 16px; margin: 6px; cursor: pointer; }
+    footer { margin-top: 40px; color: #777; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="greeting">Hello!</h1>
+    <p>Click the greeting to see an alert.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Welcome</h2>
+      <p id="welcomeMessage">Welcome to our website! We are happy to see you here.</p>
+      <button id="changeGreeting">Change Greeting</button>
+      <button id="toggleWelcome">Toggle Welcome Message</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Greeting demo built with jQuery</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Q1_welcome_greeting.js"></script>
+</body>
+</html>

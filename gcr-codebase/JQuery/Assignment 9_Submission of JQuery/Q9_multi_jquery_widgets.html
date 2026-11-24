@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi jQuery Widgets</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 0 16px; }
+    header { text-align: center; padding: 24px 0 8px; }
+    #versions { text-align: center; color: #555; }
+    .widget { border: 2px solid #ccc; border-radius: 8px; padding: 14px; margin-bottom: 16px; transition: border-color 0.2s, box-shadow 0.2s; }
+    .widget.active-widget { border-color: #1e88e5; box-shadow: 0 0 10px rgba(30, 136, 229, 0.4); }
+    .slide { padding: 40px 20px; text-align: center; font-size: 20px; color: #fff; border-radius: 6px; }
+    .slide:nth-child(1) { background: #e53935; }
+    .slide:nth-child(2) { background: #1e88e5; }
+    .slide:nth-child(3) { background: #43a047; }
+    .slide:nth-child(4) { background: #fb8c00; }
+    .slide:nth-child(5) { background: #8e24aa; }
+    button { padding: 8px 14px; margin: 6px 6px 0 0; cursor: pointer; }
+    .info-icon { display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center; background: #1e88e5; color: #fff; border-radius: 50%; cursor: help; font-size: 14px; }
+    .tooltip { position: absolute; background: #333; color: #fff; padding: 6px 10px; border-radius: 4px; font-size: 13px; z-index: 50; }
+    #modalOverlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center; z-index: 100; }
+    #modalBox { background: #fff; padding: 24px; border-radius: 10px; max-width: 340px; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dashboard</h1>
+    <p id="versions"></p>
+  </header>
+
+  <main>
+    <section class="widget" id="carouselWidget" aria-label="Carousel">
+      <h2>Carousel (jQuery 1.x)</h2>
+      <div id="carousel">
+        <div class="slide">Slide 1: Welcome to the dashboard</div>
+        <div class="slide">Slide 2: New reports are ready</div>
+        <div class="slide">Slide 3: Team meeting at 4 PM</div>
+        <div class="slide">Slide 4: System update tonight</div>
+        <div class="slide">Slide 5: Monthly goals achieved</div>
+      </div>
+      <button id="prevSlide">Previous</button>
+      <button id="nextSlide">Next</button>
+    </section>
+
+    <section class="widget" id="notificationWidget" aria-label="Notifications">
+      <h2>Notifications (jQuery 3.x)</h2>
+      <p>
+        You have updates waiting
+        <span class="info-icon" data-tooltip="Click the button to open your notifications">i</span>
+      </p>
+      <button id="openModal" data-tooltip="Opens a popup with notifications">Show Notification</button>
+    </section>
+
+    <section class="widget" id="statsWidget" aria-label="Statistics">
+      <h2>Statistics</h2>
+      <p>
+        Visitors today: 1,284
+        <span class="info-icon" data-tooltip="Updated every hour">i</span>
+      </p>
+    </section>
+
+    <section class="widget" id="tasksWidget" aria-label="Tasks">
+      <h2>Tasks</h2>
+      <p>
+        Pending tasks: 7
+        <span class="info-icon" data-tooltip="3 are due today">i</span>
+      </p>
+    </section>
+  </main>
+
+  <div id="modalOverlay" role="dialog" aria-modal="true">
+    <div id="modalBox">
+      <h3>New Notification</h3>
+      <p>Your weekly report has been generated.</p>
+      <button id="closeModal">Close</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>Two jQuery versions running together</p>
+  </footer>
+
+  <!-- Load jQuery 1.x and immediately give it its own name -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>var $v1 = jQuery.noConflict(true);</script>
+
+  <!-- Load jQuery 3.x and give it a different name -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>var $v2 = jQuery.noConflict(true);</script>
+
+  <script src="Q9_multi_jquery_widgets.js"></script>
+</body>
+</html>

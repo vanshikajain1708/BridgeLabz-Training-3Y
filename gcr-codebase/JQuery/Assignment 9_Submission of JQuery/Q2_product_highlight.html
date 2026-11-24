@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Highlight</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 0 16px; }
+    header { text-align: center; padding: 24px 0; }
+    #products { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+    .product { position: relative; border: 1px solid #ccc; border-radius: 8px; padding: 14px; cursor: pointer; background: #fff; transition: background 0.2s; }
+    .product.highlight { background: #fff9c4; border-color: #fbc02d; }
+    .product.discounted { border: 2px dashed #2e7d32; }
+    .product.discounted::after { content: "SALE"; position: absolute; top: 8px; right: 50px; background: #2e7d32; color: #fff; font-size: 12px; padding: 2px 6px; border-radius: 4px; }
+    .favorite { position: absolute; top: 6px; right: 8px; border: none; background: none; font-size: 24px; color: #bbb; cursor: pointer; }
+    .favorite.selected { color: gold; }
+    .details { display: none; margin-top: 8px; font-size: 14px; color: #555; }
+    .price { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Our Products</h1>
+    <p>Click to highlight, hover for details, use the star to mark a favorite.</p>
+  </header>
+
+  <main>
+    <section id="products" aria-label="Product list">
+      <article class="product" data-stock="12" data-discount="true">
+        <h3>Wireless Headphones</h3>
+        <p class="price">Rs. 2,499</p>
+        <button class="favorite" aria-label="Favorite">&#9733;</button>
+        <div class="details">Bluetooth 5.0, 30 hour battery, noise cancellation.</div>
+      </article>
+
+      <article class="product" data-stock="5">
+        <h3>Smart Watch</h3>
+        <p class="price">Rs. 4,999</p>
+        <button class="favorite" aria-label="Favorite">&#9733;</button>
+        <div class="details">Heart rate monitor, GPS and water resistant.</div>
+      </article>
+
+      <article class="product" data-stock="0">
+        <h3>Gaming Mouse</h3>
+        <p class="price">Rs. 1,299</p>
+        <button class="favorite" aria-label="Favorite">&#9733;</button>
+        <div class="details">RGB lighting, 12000 DPI and 6 programmable buttons.</div>
+      </article>
+
+      <article class="product" data-stock="8" data-discount="true">
+        <h3>Laptop Backpack</h3>
+        <p class="price">Rs. 899</p>
+        <button class="favorite" aria-label="Favorite">&#9733;</button>
+        <div class="details">Water resistant, fits 15.6 inch laptops, USB charging port.</div>
+      </article>
+
+      <article class="product" data-stock="0">
+        <h3>Mechanical Keyboard</h3>
+        <p class="price">Rs. 3,199</p>
+        <button class="favorite" aria-label="Favorite">&#9733;</button>
+        <div class="details">Blue switches, backlit keys and aluminium frame.</div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Product highlight demo built with jQuery</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Q2_product_highlight.js"></script>
+</body>
+</html>

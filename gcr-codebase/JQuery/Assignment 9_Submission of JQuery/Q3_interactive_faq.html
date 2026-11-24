@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive FAQ</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 0 16px; }
+    header { text-align: center; padding: 24px 0; }
+    .faq-item { border: 1px solid #ccc; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+    .question { margin: 0; padding: 14px; cursor: pointer; background: #f5f5f5; font-size: 17px; }
+    .answer { display: none; padding: 14px; }
+    .answer input { width: 100%; padding: 8px; box-sizing: border-box; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Frequently Asked Questions</h1>
+    <p>Click a question to open it. Double-click a question to collapse everything.</p>
+  </header>
+
+  <main>
+    <section id="faq" aria-label="FAQ">
+      <article class="faq-item">
+        <h3 class="question">What is jQuery?</h3>
+        <div class="answer">
+          <p>jQuery is a fast JavaScript library that makes DOM handling and events simple.</p>
+          <input type="text" class="answer-input" placeholder="Add a comment..." />
+        </div>
+      </article>
+
+      <article class="faq-item">
+        <h3 class="question">How do I include jQuery in a page?</h3>
+        <div class="answer">
+          <p>Add a script tag that points to the jQuery file (CDN or local) before your own script.</p>
+          <input type="text" class="answer-input" placeholder="Add a comment..." />
+        </div>
+      </article>
+
+      <article class="faq-item">
+        <h3 class="question">What does $(document).ready() do?</h3>
+        <div class="answer">
+          <p>It runs your code only after the HTML document has finished loading.</p>
+          <input type="text" class="answer-input" placeholder="Add a comment..." />
+        </div>
+      </article>
+
+      <article class="faq-item">
+        <h3 class="question">What is event delegation?</h3>
+        <div class="answer">
+          <p>Attaching one event listener to a parent so it can handle events of current and future children.</p>
+          <input type="text" class="answer-input" placeholder="Add a comment..." />
+        </div>
+      </article>
+
+      <article class="faq-item">
+        <h3 class="question">Is jQuery still used today?</h3>
+        <div class="answer">
+          <p>Yes, many existing websites still use it, so it is useful to know.</p>
+          <input type="text" class="answer-input" placeholder="Add a comment..." />
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>FAQ demo built with jQuery</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Q3_interactive_faq.js"></script>
+</body>
+</html>

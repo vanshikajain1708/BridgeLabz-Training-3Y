@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Members Directory</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 760px; margin: 0 auto; padding: 0 16px; }
+    header { text-align: center; padding: 24px 0 8px; }
+    .department { border: 1px solid #ccc; border-radius: 8px; padding: 14px; margin-bottom: 16px; }
+    .dept-name { display: inline-block; margin: 0 12px 0 0; cursor: pointer; }
+    .members { list-style: none; padding: 0; margin: 12px 0 0; }
+    .employee { padding: 10px; margin-bottom: 6px; border-radius: 6px; background: #f5f5f5; }
+    .manager { font-weight: bold; cursor: pointer; border-left: 4px solid #1565c0; }
+    .name { cursor: default; }
+    .contact { display: none; margin-left: 12px; font-weight: normal; color: #555; font-size: 14px; }
+    .report { background: #c8e6c9; }
+    .picked { background: #ffcc80; }
+    .sibling-highlight { background: #bbdefb; }
+    button { padding: 6px 12px; cursor: pointer; }
+    .toolbar { text-align: center; margin: 10px 0 18px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Team Directory</h1>
+    <p>Click a manager, a department name, or hover over a name.</p>
+  </header>
+
+  <main>
+    <div class="toolbar">
+      <button id="randomBtn">Select Random Employee</button>
+    </div>
+
+    <section id="directory">
+      <article class="department">
+        <h2 class="dept-name">Engineering</h2>
+        <button class="toggle-team">Collapse Team</button>
+        <ul class="members">
+          <li class="employee manager" data-id="anita">
+            <span class="name">Anita Rao (Manager)</span>
+            <span class="contact">anita@company.com | 555-0101</span>
+          </li>
+          <li class="employee" data-manager="anita">
+            <span class="name">Ravi Kumar</span>
+            <span class="contact">ravi@company.com | 555-0102</span>
+          </li>
+          <li class="employee" data-manager="anita">
+            <span class="name">Sneha Iyer</span>
+            <span class="contact">sneha@company.com | 555-0103</span>
+          </li>
+          <li class="employee" data-manager="anita">
+            <span class="name">Karan Mehta</span>
+            <span class="contact">karan@company.com | 555-0104</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="department">
+        <h2 class="dept-name">Design</h2>
+        <button class="toggle-team">Collapse Team</button>
+        <ul class="members">
+          <li class="employee manager" data-id="priya">
+            <span class="name">Priya Nair (Manager)</span>
+            <span class="contact">priya@company.com | 555-0201</span>
+          </li>
+          <li class="employee" data-manager="priya">
+            <span class="name">Meera Das</span>
+            <span class="contact">meera@company.com | 555-0202</span>
+          </li>
+          <li class="employee" data-manager="priya">
+            <span class="name">Arjun Sen</span>
+            <span class="contact">arjun@company.com | 555-0203</span>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Directory demo built with jQuery</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Q5_team_directory.js"></script>
+</body>
+</html>
