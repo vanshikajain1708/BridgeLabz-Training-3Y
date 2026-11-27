@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q3 - Task Manager</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    select { padding: 8px; margin-bottom: 15px; width: 220px; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; justify-content: space-between; align-items: center; padding: 10px; border: 1px solid #ddd; margin-bottom: 8px; border-radius: 5px; }
+    .done { text-decoration: line-through; color: gray; }
+  </style>
+</head>
+<body>
+  <h2>Task Manager</h2>
+  <label for="filterSelect">Filter Tasks: </label>
+  <select id="filterSelect">
+    <option value="all">All Tasks</option>
+    <option value="Low">Low Priority</option>
+    <option value="Medium">Medium Priority</option>
+    <option value="High">High Priority</option>
+    <option value="completed">Completed</option>
+  </select>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    const API_URL = "http://localhost:3003/tasks";
+
+    function loadTasks(filter = "all") {
+      let queryUrl = API_URL;
+      if (filter === "completed") {
+        queryUrl += "?completed=true";
+      } else if (filter !== "all") {
+        queryUrl += `?priority=${filter}`;
+      }
+
+      $.ajax({
+        url: queryUrl,
+        method: "GET",
+        success: function (tasks) {
+          const list = $("#taskList");
+          list.empty();
+
+          tasks.forEach(task => {
+            list.append(`
+              <li>
+                <div>
+                  <input type="checkbox" class="task-check" data-id="${task.id}" ${task.completed ? "checked" : ""}>
+                  <span class="${task.completed ? "done" : ""}">${task.title}</span>
+                </div>
+                <strong>[${task.priority}]</strong>
+              </li>
+            `);
+          });
+        }
+      });
+    }
+
+    $(document).ready(function () {
+      loadTasks();
+
+      $("#filterSelect").on("change", function () {
+        loadTasks($(this).val());
+      });
+
+      $(document).on("change", ".task-check", function () {
+        const id = $(this).data("id");
+        const isCompleted = $(this).is(":checked");
+
+        $.ajax({
+          url: `${API_URL}/${id}`,
+          method: "PATCH",
+          contentType: "application/json",
+          data: JSON.stringify({ completed: isCompleted }),
+          success: function () {
+            loadTasks($("#filterSelect").val());
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

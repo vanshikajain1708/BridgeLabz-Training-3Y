@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q5 - College Timetable Viewer</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 650px; margin: auto; }
+    select { padding: 8px; font-size: 15px; margin-bottom: 15px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h2>College Timetable</h2>
+  <label for="daySelect">Select Weekday: </label>
+  <select id="daySelect">
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+  </select>
+
+  <div id="timetableContainer"></div>
+
+  <script>
+    const API_URL = "http://localhost:3005/timetable";
+
+    async function loadTimetable(day) {
+      const container = document.getElementById("timetableContainer");
+      try {
+        const res = await fetch(`${API_URL}?day=${encodeURIComponent(day)}`);
+        const classes = await res.json();
+
+        if (classes.length === 0) {
+          container.innerHTML = "<p>No classes today.</p>";
+          return;
+        }
+
+        let rows = classes.map(c => `
+          <tr>
+            <td>${c.subject}</td>
+            <td>${c.faculty}</td>
+            <td>${c.time}</td>
+          </tr>
+        `).join("");
+
+        container.innerHTML = `
+          <table>
+            <thead>
+              <tr>
+                <th>Subject Name</th>
+                <th>Faculty</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        `;
+      } catch (err) {
+        container.innerHTML = "<p>Error loading timetable.</p>";
+      }
+    }
+
+    const daySelect = document.getElementById("daySelect");
+    daySelect.addEventListener("change", () => loadTimetable(daySelect.value));
+    loadTimetable(daySelect.value);
+  </script>
+</body>
+</html>

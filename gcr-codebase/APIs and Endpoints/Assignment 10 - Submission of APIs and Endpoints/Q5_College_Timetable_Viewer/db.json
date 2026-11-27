@@ -1,0 +1,9 @@
+{
+  "timetable": [
+    { "id": "1", "day": "Monday", "subject": "Data Structures", "faculty": "Dr. A. Kumar", "time": "09:00 AM - 10:00 AM" },
+    { "id": "2", "day": "Monday", "subject": "Operating Systems", "faculty": "Prof. S. Verma", "time": "10:00 AM - 11:00 AM" },
+    { "id": "3", "day": "Tuesday", "subject": "Database Management", "faculty": "Dr. R. Singh", "time": "11:00 AM - 12:00 PM" },
+    { "id": "4", "day": "Wednesday", "subject": "Artificial Intelligence", "faculty": "Prof. N. Joshi", "time": "09:00 AM - 10:00 AM" },
+    { "id": "5", "day": "Thursday", "subject": "Computer Networks", "faculty": "Dr. M. Das", "time": "02:00 PM - 03:00 PM" }
+  ]
+}

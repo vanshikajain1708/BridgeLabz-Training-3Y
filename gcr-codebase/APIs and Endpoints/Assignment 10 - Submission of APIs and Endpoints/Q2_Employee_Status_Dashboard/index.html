@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q2 - Employee Status Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    .active { color: green; font-weight: bold; }
+    .inactive { color: red; font-weight: bold; }
+    button { padding: 6px 12px; cursor: pointer; }
+    #errorMsg { color: red; font-weight: bold; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Employee Status Dashboard</h2>
+  <div id="errorMsg"></div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="empTable"></tbody>
+  </table>
+
+  <script>
+    const API_URL = "http://localhost:3002/employees";
+
+    function loadEmployees() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", API_URL, true);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const employees = JSON.parse(xhr.responseText);
+          const tbody = document.getElementById("empTable");
+          tbody.innerHTML = "";
+
+          employees.forEach(emp => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td>${emp.id}</td>
+              <td>${emp.name}</td>
+              <td id="status-${emp.id}" class="${emp.status}">${emp.status}</td>
+              <td>
+                <button id="btn-${emp.id}" onclick="toggleStatus('${emp.id}')">
+                  ${emp.status === "active" ? "Set Inactive" : "Set Active"}
+                </button>
+              </td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+      };
+      xhr.send();
+    }
+
+    function toggleStatus(id) {
+      const statusCell = document.getElementById(`status-${id}`);
+      const btn = document.getElementById(`btn-${id}`);
+      const errorDiv = document.getElementById("errorMsg");
+      errorDiv.textContent = "";
+
+      const oldStatus = statusCell.textContent.trim();
+      const newStatus = oldStatus === "active" ? "inactive" : "active";
+
+      // Immediately update UI (Optimistic update)
+      updateRowUI(statusCell, btn, newStatus);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("PATCH", `${API_URL}/${id}`, true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      xhr.onload = function () {
+        if (xhr.status < 200 || xhr.status >= 300) {
+          updateRowUI(statusCell, btn, oldStatus);
+          errorDiv.textContent = `Failed to update status for Employee #${id}. Reverted.`;
+        }
+      };
+
+      xhr.onerror = function () {
+        updateRowUI(statusCell, btn, oldStatus);
+        errorDiv.textContent = `Network error! Could not update Employee #${id}. Reverted.`;
+      };
+
+      xhr.send(JSON.stringify({ status: newStatus }));
+    }
+
+    function updateRowUI(statusCell, btn, status) {
+      statusCell.textContent = status;
+      statusCell.className = status;
+      btn.textContent = status === "active" ? "Set Inactive" : "Set Active";
+    }
+
+    loadEmployees();
+  </script>
+</body>
+</html>

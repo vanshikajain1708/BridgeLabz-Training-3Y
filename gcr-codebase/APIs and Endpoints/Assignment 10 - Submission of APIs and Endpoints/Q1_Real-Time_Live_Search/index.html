@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q1 - Live Search</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 700px; margin: auto; }
+    input { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 15px; }
+    .card { display: flex; align-items: center; gap: 15px; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 6px; }
+    .card img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
+    #loading { display: none; color: #007bff; font-weight: bold; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Product Live Search</h2>
+  <input type="text" id="searchInput" placeholder="Search products...">
+  <div id="loading">Loading products...</div>
+  <div id="results"></div>
+
+  <script>
+    const API_URL = "http://localhost:3001/products";
+
+    function fetchProducts(query = "") {
+      $("#loading").show();
+      $.ajax({
+        url: `${API_URL}?q=${encodeURIComponent(query)}`,
+        method: "GET",
+        success: function (data) {
+          $("#loading").hide();
+          const container = $("#results");
+          container.empty();
+
+          if (data.length === 0) {
+            container.html("<p>No products found</p>");
+            return;
+          }
+
+          data.forEach(item => {
+            container.append(`
+              <div class="card">
+                <img src="${item.image}" alt="${item.name}">
+                <div>
+                  <h4>${item.name}</h4>
+                  <p>₹${item.price}</p>
+                </div>
+              </div>
+            `);
+          });
+        },
+        error: function () {
+          $("#loading").hide();
+          $("#results").html("<p>Error fetching products.</p>");
+        }
+      });
+    }
+
+    $(document).ready(function () {
+      fetchProducts();
+      $("#searchInput").on("input", function () {
+        fetchProducts($(this).val().trim());
+      });
+    });
+  </script>
+</body>
+</html>
